@@ -492,6 +492,72 @@ ol.steps > li > p:last-child{margin-bottom:0}
   <span class="term">neighbors</span>. The <span class="term">degree</span> <span class="m">d(v)</span>
   is the number of neighbors of <span class="m">v</span>.</p>
 
+  <p>"No cycles" is the whole of the definition, and it is more permissive than it sounds.
+  A component of a forest can be a big branching tree, or a bare edge, or a single vertex
+  sitting on its own — all three are trees. The counterexample in Section 7 is a forest with
+  exactly two components, so it is worth being comfortable with the idea now.</p>
+
+  <div class="lab wide">
+    <div class="lab-head">
+      <p class="lab-title">Figure · What counts as a forest</p>
+      <span class="lab-hint">any number of components, any size — the only rule is no cycles</span>
+    </div>
+    <div class="lab-body">
+      <div class="svg-wrap">
+      <svg class="fig" viewBox="0 0 680 232" style="max-width:640px;margin:0 auto" role="img"
+           aria-label="On the left, a forest with four components of 5, 3, 2 and 1 vertices. On the right, four vertices joined in a square, which is not a forest because the edges close a cycle.">
+
+        <text class="fg-h" x="220" y="48" text-anchor="middle">A forest — four components</text>
+
+        <g stroke="var(--edge)" stroke-width="1.4" fill="none" stroke-linecap="round">
+          <line x1="103.7" y1="87.0" x2="80.3"  y2="121.0"/>
+          <line x1="116.3" y1="87.0" x2="139.7" y2="121.0"/>
+          <line x1="70.4"  y1="140.4" x2="59.6" y2="171.6"/>
+          <line x1="79.5"  y1="139.5" x2="98.5" y2="172.5"/>
+          <line x1="215"   y1="89"  x2="215" y2="119"/>
+          <line x1="215"   y1="141" x2="215" y2="171"/>
+          <line x1="285"   y1="115" x2="285" y2="145"/>
+        </g>
+        <g fill="var(--surface)" stroke="var(--ink-2)" stroke-width="1.5">
+          <circle cx="110" cy="78"  r="11"/>
+          <circle cx="74"  cy="130" r="11"/>
+          <circle cx="146" cy="130" r="11"/>
+          <circle cx="56"  cy="182" r="11"/>
+          <circle cx="104" cy="182" r="11"/>
+          <circle cx="215" cy="78"  r="11"/>
+          <circle cx="215" cy="130" r="11"/>
+          <circle cx="215" cy="182" r="11"/>
+          <circle cx="285" cy="104" r="11"/>
+          <circle cx="285" cy="156" r="11"/>
+          <circle cx="355" cy="130" r="11"/>
+        </g>
+        <text class="fg-s" x="355" y="164" text-anchor="middle" fill="var(--muted)">still a tree</text>
+
+        <line x1="420" y1="58" x2="420" y2="200" stroke="var(--rule)" stroke-width="1" stroke-dasharray="4 5"/>
+
+        <text class="fg-h" x="540" y="48" text-anchor="middle">Not a forest</text>
+        <g stroke="var(--warn)" stroke-width="1.8" fill="none" stroke-linecap="round">
+          <line x1="516" y1="95"  x2="564" y2="95"/>
+          <line x1="575" y1="106" x2="575" y2="154"/>
+          <line x1="516" y1="165" x2="564" y2="165"/>
+          <line x1="505" y1="106" x2="505" y2="154"/>
+        </g>
+        <g fill="var(--surface)" stroke="var(--warn)" stroke-width="1.5">
+          <circle cx="505" cy="95"  r="11"/>
+          <circle cx="575" cy="95"  r="11"/>
+          <circle cx="575" cy="165" r="11"/>
+          <circle cx="505" cy="165" r="11"/>
+        </g>
+        <text class="fg-s" x="540" y="200" text-anchor="middle" fill="var(--warn)">the four edges close a cycle</text>
+      </svg>
+      </div>
+    </div>
+    <div class="lab-foot">Left: one forest on 11 vertices, whose components have 5, 3, 2 and 1
+      vertices. The lone vertex on the right of that group is a perfectly good tree — it just has
+      no edges. Right: the same four vertices joined into a square. Every graph on this page must
+      avoid that; Theorem 27 in Section 3 is false without it.</div>
+  </div>
+
   <div class="def">
     <p class="def-h">Proper coloring</p>
     <p>A <strong>proper coloring</strong> assigns a color to every vertex so that no edge has both
