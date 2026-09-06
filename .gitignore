@@ -1,0 +1,15 @@
+# Build artefacts
+scripts/selc
+scripts/out/
+.lake/
+*.olean
+__pycache__/
+q13lean/.lake/
+paper/*.aux
+paper/*.log
+paper/*.out
+
+# Raw text of third-party papers (fetch with lit/fetch.sh; not redistributed)
+lit/*.txt
+
+.DS_Store

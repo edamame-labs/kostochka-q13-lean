@@ -1,0 +1,301 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\SE}{\mathrm{SE}}
+\newcommand{\N}{\mathbb{N}}
+\DeclareMathOperator{\modstar}{mod^{*}}
+
+\title{A negative answer to a question of Kierstead, Kostochka and Xiang\\
+on strongly equitable list coloring of forests}
+\author{}
+\date{September 2026 --- draft}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A forest $T$ on $n$ vertices is equitably $k$-colorable ($k\ge 3$) if and only if every
+vertex lies in an independent set of size at least $\lfloor n/k\rfloor$ (Chen--Lih;
+Miyata--Tokunaga--Kaneko). Kierstead, Kostochka and Xiang asked whether the same
+condition characterizes strongly equitable $k$-choosability of forests. We show that it
+does not: for every $k\ge 2$ there is a forest, and even a tree, on $2k^3+k$ vertices
+that satisfies the independence condition (indeed is equitably $k$-colorable) but is not
+equitably $k$-choosable even in the weaker sense of Kostochka, Pelsmajer and West.
+The construction sharpens an example of Kaul, Mudrock and Wagstrom, and it generalizes
+to a family of necessary conditions for strongly equitable choosability of forests.
+\end{abstract}
+
+\section{Introduction}
+
+All graphs are finite and simple. For a graph $G$ and a vertex $v$, let $\alpha_v(G)$
+denote the maximum size of an independent set of $G$ containing $v$, and let $N(v)$,
+$N[v]=N(v)\cup\{v\}$ and $d(v)=|N(v)|$ be the neighborhood, closed neighborhood and
+degree of $v$. We write $[k]=\{1,\dots,k\}$.
+
+A proper vertex coloring is \emph{equitable} if any two color classes differ in size by
+at most one. In an equitable $k$-coloring of an $n$-vertex graph every class has at least
+$\lfloor n/k\rfloor$ vertices, so the class of $v$ witnesses
+$\alpha_v(G)\ge\lfloor n/k\rfloor$. For forests this obvious necessary condition is also
+sufficient.
+
+\begin{theorem}[Chen--Lih \cite{CL}; Miyata--Tokunaga--Kaneko \cite{MTK}; see Chang \cite{Chang}]
+\label{thm:CL}
+Let $k\ge 3$. A forest $T$ on $n$ vertices is equitably $k$-colorable if and only if
+$\alpha_v(T)\ge\lfloor n/k\rfloor$ for every vertex $v$.
+\end{theorem}
+
+We call the condition in Theorem~\ref{thm:CL} the \emph{independence condition}.
+
+\subsection*{List versions}
+A \emph{$k$-list assignment} for $G$ is a map $L$ from $V(G)$ to sets of colors with
+$|L(v)|=k$ for all $v$, and an \emph{$L$-coloring} is a proper coloring $f$ with
+$f(v)\in L(v)$ for all $v$. Kostochka, Pelsmajer and West \cite{KPW} call an $L$-coloring
+\emph{equitable} if every color class has at most $\lceil |G|/k\rceil$ vertices, and $G$
+\emph{equitably $k$-choosable} if it has an equitable $L$-coloring for every $k$-list
+assignment $L$. Note that an equitable $L$-coloring may use more than $k$ colors and may
+have very small classes; only an upper bound on class sizes is imposed.
+
+Kierstead, Kostochka and Xiang \cite{KKXplanar,KKXsparse} introduced a stronger notion.
+Write $|G|=kq+r$ with $q\in\N$ and $1\le r\le k$, and set $|G|\modstar k:=r$ (so
+$|G|\modstar k=k$ when $k$ divides $|G|$). A color class is \emph{full} if it has exactly
+$\lceil |G|/k\rceil$ vertices. An $L$-coloring is \emph{strongly equitable} ($\SE$) if no
+class has more than $\lceil |G|/k\rceil$ vertices and at most $|G|\modstar k$ classes are
+full; $G$ is \emph{$\SE$ $k$-choosable} if it has an $\SE$ $L$-coloring for every $k$-list
+assignment $L$. Two features of this definition matter here.
+\begin{itemize}
+\item Every $\SE$ $L$-coloring is an equitable $L$-coloring in the sense of \cite{KPW};
+  hence $\SE$ $k$-choosable graphs are equitably $k$-choosable.
+\item If all lists equal $[k]$, then the $\SE$ $L$-colorings are exactly the equitable
+  $k$-colorings: with $r=|G|\modstar k$ there are $r$ classes of size $q+1$ and $k-r$ of
+  size $q$. Hence $\SE$ $k$-choosable graphs are equitably $k$-colorable, and in particular
+  $\SE$ $k$-choosable forests satisfy the independence condition.
+\end{itemize}
+In their survey \cite[Question~13]{KKXsurvey}, Kierstead, Kostochka and Xiang asked
+whether Theorem~\ref{thm:CL} extends to this setting.
+
+\begin{question}[\cite{KKXsurvey}]\label{q13}
+Is it true that for each $k\ge 3$, an $n$-vertex forest $T$ is $\SE$ $k$-choosable if and
+only if $\alpha_v(T)\ge\lfloor n/k\rfloor$ for every vertex $v$?
+\end{question}
+
+By the second feature above, the ``only if'' direction holds. We show that the ``if''
+direction fails for every $k$, even for trees, and even for the weaker notion of
+\cite{KPW}.
+
+\begin{theorem}\label{thm:main}
+Let $k\ge 2$, $q=2k^2+1$ and $n=kq=2k^3+k$. There is a forest $F_k$ and a tree $T_k$, each
+on $n$ vertices, such that
+\begin{enumerate}
+\item[\textup{(i)}] $F_k$ and $T_k$ have equitable $k$-colorings; in particular
+  $\alpha_v\ge q=\lfloor n/k\rfloor$ for every vertex $v$;
+\item[\textup{(ii)}] $F_k$ and $T_k$ are not equitably $k$-choosable in the sense of
+  \cite{KPW}, and hence not $\SE$ $k$-choosable.
+\end{enumerate}
+Consequently the answer to Question~\ref{q13} is negative for every $k\ge 3$.
+\end{theorem}
+
+The forest $F_k$ is a disjoint union of two stars. Kaul, Mudrock and Wagstrom
+\cite[Proposition~22]{KMW} proved, for a different purpose, that
+$K_{1,(k-1)(k^3-k+2)}+K_{1,k^3}$ is not equitably $k$-choosable. That forest also satisfies
+the independence condition, so it already answers Question~\ref{q13} in the negative;
+the connection does not seem to have been noticed. Our $F_k$ is the smallest member of
+the same family of examples (Remark~\ref{rem:KMW}). In Section~\ref{sec:general}
+the argument is generalized to a family of necessary conditions for $\SE$
+$k$-choosability of forests, and Section~\ref{sec:open} collects open questions.
+
+\section{The construction}\label{sec:construction}
+
+Throughout this section $k\ge 2$, $q=2k^2+1$ and $n=kq$. Since $k$ divides $n$, we have
+$\lfloor n/k\rfloor=\lceil n/k\rceil=q$, and an $L$-coloring is equitable in the sense of
+\cite{KPW} exactly when every color is used at most $q$ times.
+
+\subsection*{The forest}
+Let $F_k$ be the disjoint union of two stars: one with center $u_0$ and leaf set $A$,
+where $|A|=(k-1)q-1$, and one with center $w_0$ and leaf set $B$, where $|B|=2k^2$.
+Then
+\[
+|F_k| = 2+\big((k-1)q-1\big)+2k^2 = (k-1)q+q = kq = n .
+\]
+Index the leaves of $w_0$ by triples,
+$B=\{b_{c,d,t} : c\in[k],\ d\in\{k+1,\dots,2k\},\ t\in\{1,2\}\}$.
+
+\subsection*{Equitable colorability}
+The set $\{u_0\}\cup B$ is independent and has $1+2k^2=q$ vertices; the set
+$\{w_0\}\cup A$ is independent and has $(k-1)q$ vertices. Using $\{u_0\}\cup B$ as one
+class and splitting $\{w_0\}\cup A$ into $k-1$ classes of size $q$ gives an equitable
+$k$-coloring of $F_k$. This proves (i) of Theorem~\ref{thm:main} for $F_k$.
+
+\subsection*{The list assignment}
+Define a $k$-list assignment $L$ by
+\[
+L(u_0)=L(a)=[k]\ \ (a\in A),\qquad
+L(w_0)=\{k+1,\dots,2k\},\qquad
+L(b_{c,d,t})=\big([k]\setminus\{c\}\big)\cup\{d\}.
+\]
+
+\subsection*{No equitable $L$-coloring}
+Suppose $f$ is an $L$-coloring of $F_k$ in which every color is used at most $q$ times.
+Let $c=f(u_0)\in[k]$ and $d=f(w_0)\in\{k+1,\dots,2k\}$. Consider the set
+\[
+S = A\cup\{b_{c,d,1},\,b_{c,d,2}\},\qquad |S|=(k-1)q+1 .
+\]
+Every $a\in A$ is adjacent to $u_0$ and has list $[k]$, so $f(a)\in[k]\setminus\{c\}$.
+Each of $b_{c,d,1},b_{c,d,2}$ is adjacent to $w_0$, so it does not receive $d$, and its
+remaining colors are $[k]\setminus\{c\}$. Thus $f$ maps the $(k-1)q+1$ vertices of $S$
+into the $k-1$ colors of $[k]\setminus\{c\}$, and by the pigeonhole principle some color
+is used more than $q$ times, a contradiction. Hence $F_k$ is not equitably $k$-choosable,
+and, since every $\SE$ $L$-coloring is an equitable $L$-coloring, not $\SE$
+$k$-choosable. This proves (ii) for $F_k$.
+
+\subsection*{The tree}
+Fix $a_0\in A$ and $b_0\in B$ and let $T_k=F_k+a_0b_0$. Adding an edge cannot create an
+$L$-coloring, so $T_k$ is not equitably $k$-choosable. For (i), $\{u_0\}\cup B$ and
+$\{w_0\}\cup A$ are still independent in $T_k$ (neither contains both $a_0$ and $b_0$), and
+the equitable $k$-coloring above places $a_0$ and $b_0$ in different classes, so it is a
+proper equitable $k$-coloring of $T_k$. This completes the proof of
+Theorem~\ref{thm:main}. \qed
+
+\begin{remark}\label{rem:KMW}
+In the construction, the leaves of $u_0$ fill the $k-1$ colors $[k]\setminus\{c\}$ up to a
+\emph{slack} of exactly one vertex, and for each of the $k^2$ possible pairs
+$(f(u_0),f(w_0))$ two leaves of $w_0$ compete for that single slot. The example of
+\cite[Proposition~22]{KMW} is the same mechanism with slack $k-1$ and $k$ competing
+leaves per pair, which costs $n=k(k^3-k+3)$ vertices instead of $2k^3+k$
+($81$ instead of $57$ for $k=3$). Slack zero is impossible: if $|A|=(k-1)q$ then
+$|B|=q-2$ and $\alpha_{u_0}=q-1$, which violates the independence condition. This is
+precisely the obstruction that makes Theorem~\ref{thm:CL} true, and the list version
+escapes it by one vertex.
+\end{remark}
+
+\section{A general obstruction}\label{sec:general}
+
+The proof of Theorem~\ref{thm:main} only used a count of vertices forced into $k-1$
+colors. We record the general form of this count.
+
+Let $T$ be a forest on $n$ vertices and write $n=kq+r'$ with $0\le r'\le k-1$, so that
+$q=\lfloor n/k\rfloor$. In an $\SE$ $L$-coloring, any $k-1$ colors together carry at most
+$n-q$ vertices: if $r'=0$ every class has at most $q$ vertices, and if $r'\ge 1$ every
+class has at most $q+1$ vertices with at most $r'$ classes of size $q+1$, so the bound is
+$(k-1)q+r'=n-q$ in both cases. In an equitable $L$-coloring in the sense of \cite{KPW}
+the corresponding bound is $(k-1)\lceil n/k\rceil$.
+
+\begin{proposition}\label{prop:obstruction}
+Let $T$ be a forest on $n$ vertices, $q=\lfloor n/k\rfloor$, let $u\in V(T)$, let
+$W\subseteq V(T)\setminus\{u\}$, and let $Y_w\subseteq N(w)\setminus N[u]$ $(w\in W)$ be
+pairwise disjoint. If
+\begin{equation}\label{eq:obstruction}
+d(u)-|W\cap N(u)|+\sum_{w\in W}\Big\lfloor \frac{|Y_w|}{k^2}\Big\rfloor \;>\; n-q ,
+\end{equation}
+then $T$ is not $\SE$ $k$-choosable. If \eqref{eq:obstruction} holds with $n-q$ replaced
+by $(k-1)\lceil n/k\rceil$, then $T$ is not equitably $k$-choosable in the sense of
+\cite{KPW}.
+\end{proposition}
+
+\begin{proof}
+Let $D=\{k+1,\dots,2k\}$. Define $L(u)=[k]$, $L(x)=[k]$ for $x\in N(u)\setminus W$, and
+$L(w)=D$ for $w\in W$. For each $w\in W$ split $Y_w$ into $k^2$ parts
+$Y_{w,c,d}$ ($c\in[k]$, $d\in D$), each of size at least $\lfloor |Y_w|/k^2\rfloor$, and
+give every $y\in Y_{w,c,d}$ the list $([k]\setminus\{c\})\cup\{d\}$. All other lists are
+arbitrary $k$-sets. Let $f$ be an $\SE$ $L$-coloring and put $c=f(u)$. Every
+$x\in N(u)\setminus W$ is colored from $[k]\setminus\{c\}$. For $w\in W$ let $d=f(w)\in D$;
+every $y\in Y_{w,c,d}$ is adjacent to $w$, cannot receive $d$, and is therefore colored
+from $[k]\setminus\{c\}$. The number of these vertices is at least the left-hand side of
+\eqref{eq:obstruction}, which exceeds the capacity $n-q$ of $k-1$ colors. The second
+statement is identical with the other capacity.
+\end{proof}
+
+Theorem~\ref{thm:main} is the case $W=\{w_0\}$, $Y_{w_0}=B$, $|B|=2k^2$,
+$d(u_0)=(k-1)q-1$, where the left-hand side equals $(k-1)q+1=n-q+1$.
+With $W=\emptyset$, condition \eqref{eq:obstruction} reads $d(u)>n-q$; since
+$\alpha_u\le n-d(u)$, this is already excluded by the independence condition. Thus
+Proposition~\ref{prop:obstruction} adds new information only when some vertex $w$ has at
+least $k^2$ neighbors outside $N[u]$.
+
+\section{Concluding remarks and open questions}\label{sec:open}
+
+\subsection*{Verification}
+The forest $F_k$, the list assignment $L$, the independence condition and the
+non-existence of an $\SE$ $L$-coloring have been formalized for all $k\ge 2$ and
+machine-checked in Lean~4 with Mathlib (file \texttt{Q13lean/Counterexample.lean} in the
+accompanying repository). Independently, an exact flow-based program confirms
+Theorem~\ref{thm:main} for $k=3,4$ and the example of \cite{KMW} for $k=3,4$.
+
+\subsection*{Small forests}
+An exhaustive computer search found no forest satisfying the independence condition and
+admitting a defeating $k$-list assignment in the following ranges, where the palette is
+the set of colors from which all lists are drawn.
+\begin{center}
+\begin{tabular}{@{}ccc@{}}
+\toprule
+$k$ & number of vertices & palette size\\
+\midrule
+$3$ & $\le 12$ & $4$\\
+$3$ & $\le 10$ & $5$\\
+$4$ & $\le 11$ & $5$\\
+$5$ & $\le 10$ & $6$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Because a defeating assignment may need a larger palette ($L$ above uses $2k$ colors),
+these searches do not yield a lower bound on the size of a smallest counterexample.
+
+\begin{question}
+For $k=3$, what is the smallest number of vertices of a forest that satisfies the
+independence condition but is not $\SE$ $3$-choosable? It is at most $57$.
+\end{question}
+
+\subsection*{A corrected characterization?}
+The independence condition together with the family of conditions
+``\eqref{eq:obstruction} fails for all choices of $u$, $W$, $(Y_w)$'' is necessary for
+$\SE$ $k$-choosability of a forest. We do not know whether it is sufficient. A
+first test case is the class of disjoint unions of two stars, where even equitable
+$k$-choosability in the sense of \cite{KPW} has not been characterized \cite[Question~8]{KMW}.
+
+\begin{question}
+Is a forest $T$ on $n$ vertices $\SE$ $k$-choosable whenever $\alpha_v(T)\ge\lfloor n/k\rfloor$
+for all $v$ and \eqref{eq:obstruction} fails for all $u$, $W$ and $(Y_w)$?
+In particular, is $T$ $\SE$ $k$-choosable whenever the independence condition holds and
+$\Delta(T)< k^2$?
+\end{question}
+
+For comparison, Kostochka, Pelsmajer and West \cite{KPW} proved that every forest is
+equitably $k$-choosable (in the sense of \cite{KPW}) when $k\ge 1+\Delta/2$, and that
+this bound is tight (as quoted in \cite{KMW}). No such degree bound can hold for $\SE$
+$k$-choosability without the independence condition, since $\SE$ $k$-choosable graphs
+are equitably $k$-colorable; whether the independence condition suffices for
+$\SE$ $k$-choosability of forests with $\Delta\le 2k-2$ is a natural special case of
+the question above. By Proposition~\ref{prop:obstruction}, the new list obstructions
+appear only at degree $k^2$ and beyond.
+
+\begin{thebibliography}{9}
+\bibitem{Chang} G.~J.~Chang, A note on equitable colorings of forests,
+  \emph{European J.~Combin.} 30 (2009) 809--812.
+\bibitem{CL} B.-L.~Chen, K.-W.~Lih, Equitable coloring of trees,
+  \emph{J.~Combin.\ Theory Ser.~B} 61 (1994) 83--87.
+\bibitem{KMW} H.~Kaul, J.~A.~Mudrock, T.~Wagstrom, On the equitable choosability of the
+  disjoint union of stars, arXiv:2008.06333 (2020).
+\bibitem{KKXplanar} H.~A.~Kierstead, A.~V.~Kostochka, Z.~Xiang, Equitable list coloring
+  of planar graphs with given maximum degree, \emph{J.~Graph Theory} 108 (2024) 832--838.
+\bibitem{KKXsparse} H.~A.~Kierstead, A.~V.~Kostochka, Z.~Xiang, Equitable list coloring
+  of sparse graphs, \emph{Discrete Math.} 349 (2026) 114981; arXiv:2411.08372.
+\bibitem{KKXsurvey} H.~A.~Kierstead, A.~V.~Kostochka, Z.~Xiang, Results and problems on
+  equitable coloring of graphs, in: \emph{Sum(m)it 280: Surveys in Extremal Combinatorics
+  and Combinatorial Geometry}, Bolyai Soc.\ Math.\ Stud.\ 32 (2026); arXiv:2504.14711.
+\bibitem{KPW} A.~V.~Kostochka, M.~J.~Pelsmajer, D.~B.~West, A list analogue of equitable
+  coloring, \emph{J.~Graph Theory} 44 (2003) 166--177.
+\bibitem{MTK} D.~Miyata, S.~Tokunaga, A.~Kaneko, Equitable coloring of trees, unpublished
+  manuscript (cited in \cite{Chang,KKXsurvey}).
+\end{thebibliography}
+
+\end{document}
