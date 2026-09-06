@@ -21,6 +21,7 @@ constructed there for a different purpose.
 
 | path | what |
 |---|---|
+| `docs/index.html` | Interactive tutorial: every definition from scratch, then the counterexample taken apart. Deployed to GitHub Pages. |
 | `paper/note.tex`, `paper/note.pdf` | Short note with the construction, proof, a general obstruction, and open questions. |
 | `q13lean/` | Lean 4 + Mathlib formalisation of the counterexample for all k ≥ 2 (`Q13.question13_false`); no `sorry`. See `q13lean/README.md`. |
 | `scripts/` | Exact verification (`verify_counterexample.py`), exhaustive and SAT-based searches for small counterexamples. See `scripts/README.md`. |
@@ -28,6 +29,19 @@ constructed there for a different purpose.
 | `lit/` | Verified bibliography; `fetch.sh` regenerates plain text of the KKX papers locally. |
 | `logs/` | Dated session logs, including dead ends. |
 | `AGENTS.md` | Definitions and working conventions for this repository. |
+
+## Tutorial
+
+An interactive walkthrough of the background and the proof, aimed at a reader with
+undergraduate graph theory: **<https://edamame-labs.github.io/kostochka-q13-lean/>**
+
+It is a single self-contained file, `docs/index.html` — no build step, no dependencies
+beyond a web font. `.github/workflows/pages.yml` publishes `docs/` on every push to `main`.
+To view it locally, open the file in a browser, or:
+
+```bash
+python3 -m http.server -d docs 8000   # then http://localhost:8000
+```
 
 ## Reproduce
 
