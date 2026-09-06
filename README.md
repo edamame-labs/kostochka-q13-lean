@@ -6,13 +6,16 @@ for k ≥ 3, an n-vertex forest T is strongly equitably (SE) k-choosable if and 
 α_v(T) ≥ ⌊n/k⌋ for every vertex v, in analogy with the Chen–Lih / Miyata–Tokunaga–Kaneko
 characterisation of equitably k-colourable forests.
 
-**Answer: no, for every k ≥ 3, even for trees.** With q = 2k² + 1, the forest
-K₁,(k−1)q−1 ∪ K₁,2k² on n = kq = 2k³ + k vertices satisfies the independence condition
-(it is equitably k-colourable), but a specific k-list assignment admits no colouring with
-all classes of size ≤ ⌈n/k⌉, so it is not even equitably k-choosable in the weaker sense of
-Kostochka–Pelsmajer–West. Joining a leaf of each star by an edge gives a tree with the
-same properties. A larger example of the same type is implicit in Kaul–Mudrock–Wagstrom
-([arXiv:2008.06333](https://arxiv.org/abs/2008.06333), Prop. 22).
+**The independence condition is necessary but not sufficient, for every k ≥ 3, even for
+trees.** With q = 2k² + 1, the forest K₁,(k−1)q−1 ∪ K₁,2k² on n = kq = 2k³ + k vertices
+satisfies the independence condition (it is equitably k-colourable), but a specific k-list
+assignment admits no colouring with all classes of size ≤ ⌈n/k⌉, so it is not equitably
+k-choosable even in the weaker sense of Kostochka–Pelsmajer–West. Joining a leaf of each
+star by an edge gives a tree with the same properties. The condition fails by a single
+vertex, so a modified characterisation may still exist; the note formulates a general
+obstruction and the resulting open questions. A larger example of the same type appears in
+Kaul–Mudrock–Wagstrom ([arXiv:2008.06333](https://arxiv.org/abs/2008.06333), Prop. 22),
+constructed there for a different purpose.
 
 ## Contents
 
