@@ -17,6 +17,9 @@ obstruction and the resulting open questions. A larger example of the same type 
 Kaul–Mudrock–Wagstrom ([arXiv:2008.06333](https://arxiv.org/abs/2008.06333), Prop. 22),
 constructed there for a different purpose.
 
+**Website:** an interactive tutorial that builds up every definition from scratch and
+takes the counterexample apart, at **<https://edamame-labs.github.io/kostochka-q13-lean/>**.
+
 ## Contents
 
 | path | what |
