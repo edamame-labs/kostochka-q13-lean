@@ -33,7 +33,7 @@ constructed there for a different purpose.
 ## Tutorial
 
 An interactive walkthrough of the background and the proof, aimed at a reader with
-undergraduate graph theory: **<https://jxucoder.github.io/kostochka-q13-lean/>**
+undergraduate graph theory: **<https://edamame-labs.github.io/kostochka-q13-lean/>**
 
 It is a single self-contained file, `docs/index.html` — no build step, no dependencies
 beyond a web font. `.github/workflows/pages.yml` publishes `docs/` on every push to `main`.
